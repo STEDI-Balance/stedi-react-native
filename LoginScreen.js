@@ -51,7 +51,7 @@ class Inputs extends Component {
                   onPress = {
                      () => this.sendPhone(this.state.phone)
                   }>
-                  <Text style = {styles.submitButtonText}> Submit </Text>
+                  <Text style = {styles.submitButtonText}> Submit Phone Number</Text>
                </TouchableOpacity>
                <TextInput style = {styles.input}
                   underlineColorAndroid = 'transparent'
@@ -66,7 +66,7 @@ class Inputs extends Component {
                   onPress = {
                      () => this.login(this.state.OTP)
                   }>
-                  <Text style = {styles.submitButtonText}> Submit </Text>
+                  <Text style = {styles.submitButtonText}> Submit OTP</Text>
                </TouchableOpacity>
             </View>
          </TouchableWithoutFeedback>
