@@ -5,7 +5,7 @@ class Inputs extends Component {
       phone: '',
       OTP: '',
    }
-   handlePhone = (text) => {
+   handlePhone = ( text ) => {
       this.setState({ phone: text })
    }
    handleOTP = (text) => {
