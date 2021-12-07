@@ -18,10 +18,9 @@ export default function App() {
   return (
     <NavigationContainer>
       <Tab.Navigator
-        initialRouteName='Home'
+        initialRouteName='Login'
         activeColor='white'
-        barStyle={{ backgroundColor: 'green' }}
-      >
+        barStyle={{ backgroundColor: 'green' }}>
         <Tab.Screen
           name='Home'
           component={Home}
@@ -61,15 +60,10 @@ export default function App() {
               <FontAwesome name='sign-in' color={color} size={26} />
             ),
           }}
-          />
+        />
       </Tab.Navigator>
     </NavigationContainer>
   );
-
-
 }
 
-
-const styles = StyleSheet.create({
-  
-});
+const styles = StyleSheet.create({});
