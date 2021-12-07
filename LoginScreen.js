@@ -22,17 +22,7 @@ class Inputs extends Component {
        });
    }
    login = (OTP) => {
-      fetch('https://dev.stedi.me/twofactorlogin/', {
-         method: 'POST',
-         headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json'
-         },
-         body: JSON.stringify({
-            phoneNumber:phone,
-	         oneTimePassword:OTP
-         })
-      });
+      
    }
    render() {
       return (
