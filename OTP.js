@@ -6,7 +6,13 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 function OTP(props) {
   return (
     <View>
-      <Button title='Send Code' onPress={() => console.log(props.number)} />
+      <Button
+        title='Send Code'
+        onPress={() => {
+          let number = props.number;
+          console.log(number);
+        }}
+      />
     </View>
   );
 }
