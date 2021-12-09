@@ -11,6 +11,8 @@ class Inputs extends Component {
    handleOTP = (text) => {
       this.setState({ OTP: text })
    }
+
+   //This function sends the code to the users phone.
    sendPhone = (phone) => {
       fetch('https://dev.stedi.me/twofactorlogin/' + phone, {
          method: 'POST',
@@ -87,6 +89,7 @@ const styles = StyleSheet.create({
       borderWidth: 1,
       paddingLeft: 10,
    },
+   //style sheet for the submit button.
    submitButton: {
       backgroundColor: '#00A310',
       padding: 10,
@@ -94,6 +97,7 @@ const styles = StyleSheet.create({
       height: 40,
       justifyContent: 'center',
    },
+   //style sheet for the text in the submit button.
    submitButtonText:{
       color: 'white',
       textAlign: 'center'
