@@ -4,6 +4,7 @@ Please type into your terminal the following code:
 npm install - This runs the npm install command which allows you to run the application
 npm start -  This starts the expo developer tools which you can use to run the app.
 
+This is random text to practice git
 If you want to run the app on your phone you need to download the Expo Go app onto your phone from your respective app store. Using the development tools you accessed using npm start you will be able to scan a QR code using the app in order to run/test the app in its current state.
 
 --------------------------------------------------------------------------------------------------------------------

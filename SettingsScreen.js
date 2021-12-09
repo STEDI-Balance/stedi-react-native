@@ -64,6 +64,7 @@ export default function SettingsScreen() {
   );
 }
 
+//This formats the numbers so they aren't jumping around everywhere
 function format(n) {
   var space = '';
   if (n < 0){
