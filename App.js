@@ -57,7 +57,7 @@ export default function App() {
           options={{
             tabBarLabel: 'Login',
             tabBarIcon: ({ color }) => (
-              <FontAwesome name='sign-in' color={color} size={26} />
+              <FontAwesome name='sign-in' color={color} size={27} />
             ),
           }}
         />
