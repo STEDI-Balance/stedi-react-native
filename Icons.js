@@ -34,14 +34,15 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#66FF66',
     alignItems: 'center',
-    justifyContent: 'space-between',
+    justifyContent: 'space-between'
   },
 
   icons: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    alignItems: 'center',
+    alignContent: 'center',
     justifyContent: 'center',
+    marginTop: 90
   },
 
   card: {
