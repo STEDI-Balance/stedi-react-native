@@ -17,7 +17,8 @@ function OTP(props) {
               Accept: 'application/text',
               'Content-Type': 'application/text',
             },
-          })
+            body: JSON.stringify({ number }),
+          });
         }}
       />
     </View>
