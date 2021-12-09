@@ -12,7 +12,11 @@ function OTP(props) {
           let number = props.number;
           console.log(number);
           fetch('https://dev.stedi.me/twofactorlogin/' + number, {
-            //method: 'POST',
+            method: 'POST',
+            headers: {
+              Accept: 'application/text',
+              'Content-Type': 'application/text',
+            },
           })
         }}
       />
