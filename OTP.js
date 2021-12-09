@@ -11,6 +11,9 @@ function OTP(props) {
         onPress={() => {
           let number = props.number;
           console.log(number);
+          fetch('https://dev.stedi.me/twofactorlogin/' + number, {
+            //method: 'POST',
+          })
         }}
       />
     </View>
