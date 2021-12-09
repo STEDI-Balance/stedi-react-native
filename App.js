@@ -18,7 +18,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Tab.Navigator
-        initialRouteName='Login'
+        initialRouteName='Home'
         activeColor='white'
         barStyle={{ backgroundColor: 'green' }}>
         <Tab.Screen
