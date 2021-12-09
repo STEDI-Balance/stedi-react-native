@@ -11,7 +11,8 @@ function Setting() {
     return(
       <View>
       <InputText>
-        
+       <Timer>
+        </Timer>
       </InputText>
       </View>
           )
