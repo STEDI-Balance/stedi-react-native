@@ -30,6 +30,14 @@ class Inputs extends Component {
       return (
          <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
             <View style = {styles.container}>
+            <Text style = {styles.text}>
+                  Steps to login: {"\n"}
+                  1. Type the Phone Number you used to create your account {"\n"}
+                  {"\n"}
+                  2. Click send phone number and wait for the 4 digit code that will be sent to your number  {"\n"}
+                  {"\n"}
+                  3. Insert the 4 digit code into the one time password field and click login {"\n"}
+                  </Text>
                <TextInput style = {styles.input}
                   underlineColorAndroid = 'transparent'
                   placeholder = 'Phone Number'
@@ -92,6 +100,9 @@ const styles = StyleSheet.create({
    submitButtonText:{
       color: 'white',
       textAlign: 'center'
-   }
+   },
    //luke's comment
+   text:{
+      textAlign: 'center'
+   }
 })
