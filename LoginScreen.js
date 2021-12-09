@@ -11,6 +11,8 @@ class Inputs extends Component {
    handleOTP = (text) => {
       this.setState({ OTP: text })
    }
+
+   //This function sends the code to the users phone.
    sendPhone = (phone) => {
       fetch('https://dev.stedi.me/twofactorlogin/' + phone, {
          method: 'POST',
