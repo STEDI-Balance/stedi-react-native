@@ -82,6 +82,7 @@ const styles = StyleSheet.create({
       flex: 1,
       justifyContent:'center',
    },
+   //style for where the user inputs their phone number and code in.
    input: {
       margin: 15,
       height: 40,
