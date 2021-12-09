@@ -7,7 +7,7 @@ function OTP(props) {
   return (
     <View>
       <Button
-        title="Send Code"
+        title="Add Code"
         onPress={() => {
           let number = props.number;
           fetch("https://dev.stedi.me/twofactorlogin/" + number, {
