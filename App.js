@@ -2,9 +2,10 @@ import React from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Counter from './Counter.js';
+import Timer from './Timer.js';
 import SettingsScreen from './SettingsScreen.js';
 import Home from './Home.js';
+import Screen from './screen.js';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
@@ -17,8 +18,8 @@ export default function App() {
     <NavigationContainer>
       <Tab.Navigator
         initialRouteName='Home'
-        activeColor='white'
-        barStyle={{ backgroundColor: 'green' }}
+        activeColor='black'
+        barStyle={{ backgroundColor: 'yellow' }}
       >
         <Tab.Screen
           name='Home'
@@ -31,12 +32,12 @@ export default function App() {
           }}
         />
         <Tab.Screen
-          name='Step Counter'
-          component={Counter}
+          name='Timer'
+          component={Timer}
           options={{
-            tabBarLabel: 'Step Counter',
+            tabBarLabel: 'Timer',
             tabBarIcon: ({ color }) => (
-              <MaterialCommunityIcons name='watch' color={color} size={26} />
+              <MaterialCommunityIcons name='bell' color={color} size={26} />
             ),
           }}
         />
@@ -47,6 +48,16 @@ export default function App() {
             tabBarLabel: 'Settings',
             tabBarIcon: ({ color }) => (
               <FontAwesome name='gear' color={color} size={26} />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name='Screen'
+          component={Screen}
+          options={{
+            tabBarLabel: 'Screen',
+            tabBarIcon: ({ color }) => (
+              <MaterialCommunityIcons name='bell' color={color} size={26} />
             ),
           }}
         />
