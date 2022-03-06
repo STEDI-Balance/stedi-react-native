@@ -1,10 +1,12 @@
 import React from 'react';
-import {View, Text, TextInput, StyleSheet} from 'react-native';
-import { green800 } from 'react-native-paper/lib/typescript/styles/colors';
+import {View, Text, TextInput, StyleSheet, Button} from 'react-native';
 
-export default function Login(){
+// import { green800 } from 'react-native-paper/lib/typescript/styles/colors';
+
+export default function Login(props){
   const [text, onChangeText] = React.useState("Useless Text");
-  // const [number, onChangeNumber] = React.useState(null);
+  const [number, onChangeNumber] = React.useState(null);
+  // const setUserLoggedIn = React.useRef(props.setUserLoggedIn);
   return(
     <View>
       <Text></Text>
@@ -19,6 +21,10 @@ export default function Login(){
       keyboardType='numeric'
       />
 
+     <Button title="Log In" onPress={() => authenticateLogIn(props, text)}>
+      </Button>
+  
+
     </View>
   )
 }
@@ -31,3 +37,10 @@ const styles = StyleSheet.create({
     padding: 10,
   },
 });
+
+function authenticateLogIn(props, text){
+  if (text === "10"){
+    props.setUserLoggedIn(true)
+    return true;
+  }
+}
