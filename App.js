@@ -9,6 +9,9 @@ import { createMaterialBottomTabNavigator } from '@react-navigation/material-bot
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Login from './Login.js';
+import {Button} from 'react-native'
+import{SetUserLoggedIn} from './App.js'
+import {SafeAreaView} from '/Login.js'
 
 // import Icons from "./Icons";
 const Tab = createMaterialBottomTabNavigator();
@@ -18,6 +21,7 @@ export default function App() {
   const [userLoggedIn, setUserLoggedIn] = useState(false);
   
   if(userLoggedIn){
+    console.log("User Logged In: "+userLoggedIn)
   return (
     <NavigationContainer>
       <Tab.Navigator
@@ -71,8 +75,14 @@ export default function App() {
 
 
 }
-  else {
-  return (<Login/>);
+else {
+  return (
+  <SafeAreaView>
+  <View>
+    <Text>This is the Login Screen </Text>
+     <Button title="Log In" onPress={()=>props.SetUserLoggedIn(true)}></Button>
+  </View>
+  </SafeAreaView>)
 }
 }
 const styles = StyleSheet.create({
