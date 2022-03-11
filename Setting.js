@@ -14,5 +14,4 @@ function Setting() {
       </View>
     )
   }
-
-export default Setting;
+  
