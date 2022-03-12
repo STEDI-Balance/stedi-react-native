@@ -4,9 +4,16 @@ import {View, Text, TextInput, StyleSheet, Button} from 'react-native';
 // import { green800 } from 'react-native-paper/lib/typescript/styles/colors';
 
 export default function Login(props){
-  const [text, onChangeText] = React.useState("Useless Text");
+  const [text, onChangeText] = React.useState(null);
   const [number, onChangeNumber] = React.useState(null);
   // const setUserLoggedIn = React.useRef(props.setUserLoggedIn);
+  function setUserName() {
+    fetch(
+      "https://dev.stedi.me/twofactorlogin/" + number, {
+      method: "POST"
+    }
+    )
+  }
   return(
     <View>
       <Text></Text>
@@ -15,13 +22,18 @@ export default function Login(props){
       <Text>This is the Login Screen</Text>
       <TextInput
       style={styles.input}
-      onChangeText= {onChangeText}
+      onChangeText= {onChangeNumber}
       value= {number}
       placeholder="Enter phone number"
       keyboardType='numeric'
       />
-
-     <Button title="Log In" onPress={() => authenticateLogIn(props, text)}>
+    <TextInput
+    style = {styles.input}
+    onChangeText = {onChangeText}
+    value = {text}
+    placeholder= "Enter Email"
+    />
+     <Button title="Get One Time Password" onPress={() => setUserName()}>
       </Button>
   
 
@@ -38,9 +50,27 @@ const styles = StyleSheet.create({
   },
 });
 
-function authenticateLogIn(props, text){
-  if (text === "10"){
-    props.setUserLoggedIn(true)
-    return true;
-  }
+function authenticatePhone(props, phoneText){
+  const getUserNumberFromApiAsync = async () => {
+    try {
+      const response = await fetch(
+        "https://dev.stedi.me/twofactorlogin", {
+          method: "POST"
+        }
+      );
+      const text = await response.text();
+      return text.phoneNumber;
+    } catch (error) {
+      console.error(error);
+      }
+    };
+
+    if (getUserNumberFromApiAsync === phoneText){
+      props.setUserLoggedIn(true);
+    }
+    else props.setUserLoggedIn(false);
+  // if (phoneText === "10") {
+  //   props.setUserLoggedIn(true);
+  // }
 }
+
