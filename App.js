@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity, Button, setUserLoggedIn } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, useLinkProps } from '@react-navigation/native';
 import Counter from './Counter.js';
 import SettingsScreen from './SettingsScreen.js';
 import Home from './Home.js';
@@ -15,6 +15,7 @@ const Tab = createMaterialBottomTabNavigator();
 export default function App() {
 
 const [userLoggedIn, setUserLoggedIn] = useState(false);
+const [userEmail, setUserEmail] = useState("");
 
 if(userLoggedIn){
 
@@ -27,7 +28,7 @@ if(userLoggedIn){
       >
         <Tab.Screen
           name='Home'
-          children={() => <Home setUserLoggedIn ={setUserLoggedIn}/>}
+          children={() => <Home setUserLoggedIn ={setUserLoggedIn} userEmail ={userEmail}/>}
           options={{
             tabBarLabel: 'Home',
             tabBarIcon: ({ color }) => (
@@ -63,8 +64,7 @@ if(userLoggedIn){
 }
  else {
   return ( 
-    <Login setUserLoggedIn={setUserLoggedIn}/>
-    ) 
+    <Login setUserLoggedIn={setUserLoggedIn} setUserEmail={setUserEmail}/>); 
   }
 } 
 

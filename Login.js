@@ -1,9 +1,48 @@
 import React from 'react';
-import {StyleSheet, View, Text, Button} from 'react-native';
+import {StyleSheet, View, SafeAreaView, TextInput, Alert, Text} from 'react-native';
+import {Button} from 'react-native-elements'
+import { ThemeConsumer } from 'react-native-elements';
 
 
-export default function Login(props) 
+const Login= (props) => 
 {
+  const[phone, onChangePhone]= React.useState(null);
+  const[OTP, onChangeOTP]= React.useState(null);
+
+  const getOTP = ()=> {
+    fetch('https://dev.stedi.me/twofactorlogin/' + phone, {method:'POST'})
+  }
+
+  const login = () => {
+    fetch('https://dev.stedi.me/twofactorlogin',
+    {method:'POST',
+    body: JSON.stringify({"phoneNumber": phone, "oneTimePassword": OTP})})
+    .then((response) => response.text())
+    .then((AuthKey) => {
+      // console.log(AuthKey) 
+      // console.log(phone)
+      validateToken(AuthKey)})
+  }
+
+  const validateToken =(AuthKey) => {
+    fetch('https://dev.stedi.me/validate/' +AuthKey, {method: 'Get'})
+  .then((response)=> {const statusCode= response.status
+              const email= response.text()
+              return Promise.all ([statusCode, email])})
+  .then(([statusCode, email]) => {
+                // console.log(statusCode)
+                // console.log(email)
+                if(statusCode !=200){
+                  Alert.alert("Invalid Login")
+                }
+                else {
+                  props.setUserLoggedIn(true)
+                  props.setUserEmail(email)
+                }
+              })
+  }
+    
+
   return(
 
     <SafeAreaView style={styles.page}>
@@ -12,7 +51,7 @@ export default function Login(props)
       </View>
       <TextInput
         style={styles.input}
-        onChangeText={onChangeText}
+        onChangeText={onChangePhone}
         value={phone}
         placeholder="Phone Number"
         clearButtonMode={'while-editing'}
@@ -27,7 +66,7 @@ export default function Login(props)
       </View>
       <TextInput
         style={styles.input}
-        onChangeText={onChangeNumber}
+        onChangeText={onChangeOTP}
         value={OTP}
         placeholder="One Time Password"
         keyboardType="numeric"
@@ -46,6 +85,7 @@ export default function Login(props)
   );
 }
 
+const styles= StyleSheet.create ({
 page: {
   flex: 1,
   justifyContent: 'center',
@@ -74,21 +114,7 @@ container: {
   justifyContent: 'center',
   paddingHorizontal: 10,
   alignItems: 'center'
-}
-
-
-
-
-
-
-
-
-
- 
-
-
-
-const styles = StyleSheet.create({
+},
   input: {
     height: 40,
     margin: 12,
@@ -97,4 +123,4 @@ const styles = StyleSheet.create({
   },
 });
 
-
+export default Login
