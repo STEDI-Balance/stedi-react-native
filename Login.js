@@ -1,27 +1,34 @@
 import React from 'react';
-import {StyleSheet, SafeAreaView, TextInput} from 'react-native';
+import {StyleSheet, SafeAreaView, TextInput, Button} from 'react-native';
 
-const textInputPlaceholder = () => {
-    const [number, onChangeNumber] = React.useState(null);
-    const [otp, onChangeOTP] = React.useState(null);
+const Login = (props) => {
+    const [number, setNumber] = React.useState(null);
+    const [otp, setOTP] = React.useState(null);
 
     return (
         <SafeAreaView>
           <TextInput
             style={styles.input}
-            onChangeNumber={onChangeNumber}
+            onChangeText={setNumber}
             value={number}
             placeholder="Enter Phone Number"
             keyboardType="numeric"
           />
+          <Button
+          title="Get OTP"
+          color="#87cefa" 
+          onPress={()=>getOTP(number)}/>
           <TextInput
             style={styles1.input}
-            onChangeOTP={onChangeOTP}
+            onChangeText={setOTP}
             value={otp}
             placeholder="Enter One-Time-Password"
             keyboardType="numeric"
           />
-          <Button title="Get OTP" onPress={()=>getOTP(phoneNumber)}></Button>
+          <Button 
+          title="Login" 
+          color="#87cefa"
+          onPress={()=>{props.setUserLogginIn(true)}}/>
         </SafeAreaView>
       );
     };
@@ -51,4 +58,17 @@ const textInputPlaceholder = () => {
     });
 
 
-export default textInputPlaceholder;
+export default Login;
+
+const getOTP = (number, otp) => {
+  fetch('https://dev.stedi.me/twofactorlogin/' + number, {
+  method: 'POST',
+  headers: {
+    Accept: 'application/json',
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    phoneNumber: number,
+    oneTimePassword: otp
+  })
+})};
